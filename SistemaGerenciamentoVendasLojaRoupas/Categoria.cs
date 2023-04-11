@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGerenciamentoVendasLojaRoupas
 {
-    internal class Categoria
+    class Categoria
     {
         public string Nome { get; set; }
         public Categoria(string nome)
