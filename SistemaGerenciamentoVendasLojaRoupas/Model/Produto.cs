@@ -6,9 +6,9 @@
         private string _nome;
         private string _descricao;
         private double _preco;
-        private List<Categoria> _categoria;
+        private Categoria _categoria;
 
-        public Produto(int id, string nome, string descricao, double preco, List<Categoria> categoria)
+        public Produto(int id, string nome, string descricao, double preco, Categoria categoria)
         {
             Id = id;
             _nome = nome;
@@ -34,7 +34,7 @@
             get { return _preco; }
             set { _preco = value; }
         }
-        public List<Categoria> Categorias
+        public Categoria Categorias
         {
             get { return _categoria; }
             set { _categoria = value; }

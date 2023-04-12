@@ -3,12 +3,12 @@ namespace SistemaGerenciamentoVendasLojaRoupas.Model
     public class Venda
     {
         public int Id { get; set; }
-        private List<Cliente> _cliente;
+        private Cliente _cliente;
         private List<Produto> _produtos;
         private DateTime _data;
         private double _valorTotal;
 
-        public Venda(int id, List<Cliente> cliente, List<Produto> produtos, DateTime data, double valorTotal)
+        public Venda(int id, Cliente cliente, List<Produto> produtos, DateTime data, double valorTotal)
         {
             Id = id;
             _cliente = cliente;
@@ -17,7 +17,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.Model
             _valorTotal = valorTotal;
         }
 
-        public List<Cliente> Cliente
+        public Cliente Cliente
         {
             get { return _cliente; }
             set { _cliente = value; }
