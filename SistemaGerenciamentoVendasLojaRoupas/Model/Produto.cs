@@ -11,10 +11,10 @@
         public Produto(int id, string nome, string descricao, double preco, Categoria categoria)
         {
             Id = id;
-            _nome = nome;
-            _descricao = descricao;
-            _preco = preco;
-            _categoria = categoria;
+            this._nome = nome;
+            this._descricao = descricao;
+            this._preco = preco;
+            this._categoria = categoria;
         }
 
         public string Nome
@@ -34,11 +34,18 @@
             get { return _preco; }
             set { _preco = value; }
         }
-        public Categoria Categorias
+        public Categoria Categoria
         {
             get { return _categoria; }
             set { _categoria = value; }
         }
+/*
+        public int QuantidadeEstoque()
+        {
+            int vendasProdutos;
+            return vendasProdutos.Where(vp => vp.Produto.Id == this.Id).Sum(vp => vp.Quantidade);
+        }
+*/
     }
 
 }
