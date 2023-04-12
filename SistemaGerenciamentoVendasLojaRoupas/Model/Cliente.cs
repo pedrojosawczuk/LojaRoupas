@@ -1,27 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GerenciamentoVendasLojaRoupas
+﻿namespace SistemaGerenciamentoVendasLojaRoupas.Model
 {
-	public class Cliente
-	{
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public string Endereco { get; set; }
-        public string Telefone { get; set; }
+    public class Cliente
+    {
+        public int Id { get; set; }
+        private string _nome;
+        private string _sobrenome;
+        private string _endereco;
+        private string _telefone;
 
-        public Cliente(string nome, string sobrenome, string endereco, string telefone)
+        public Cliente(int id, string nome, string sobrenome, string endereco, string telefone)
         {
-            Nome = nome;
-            Sobrenome = sobrenome;
-            Endereco = endereco;
-            Telefone = telefone;
+            Id = id;
+            this._nome = nome;
+            this._sobrenome = sobrenome;
+            this._endereco = endereco;
+            this._telefone = telefone;
         }
 
+        public string Nome
+        {
+            get { return _nome; }
+            set { this._nome = value; }
+        }
+        public string Sobrenome
+        {
+            get { return _sobrenome; }
+            set { this._sobrenome = value; }
+        }
+        public string Endereco
+        {
+            get { return _endereco; }
+            set { this._endereco = value; }
+        }
+        public string Telefone
+        {
+            get { return _telefone; }
+            set { this._telefone = value; }
+        }
     }
-
-
 }
