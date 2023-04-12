@@ -21,14 +21,15 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
         public void RealizarVenda()
         {
             Console.WriteLine("REALIZAÇÃO DE VENDA");
-            Console.Write("CPF do cliente: ");
+            Console.Write("Id do cliente: ");
             int Id = int.Parse(Console.ReadLine());
 
             Cliente cliente = clientes.Find(c => c.Id == Id);
 
+            Console.WriteLine(cliente);
             if (cliente == null)
             {
-                Console.WriteLine("Cliente não encontrado!");
+                Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
                 return;
             }
 
@@ -39,7 +40,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             if (produto == null)
             {
-                Console.WriteLine("Produto não encontrado!");
+                Console.WriteLine(" 👗 Produto não encontrado! 🗺️  ");
                 return;
             }
 
@@ -58,7 +59,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             /*produto.QuantidadeEstoque -= quantidade;*/
 
-            Console.WriteLine("Venda realizada com sucesso!");
+            Console.WriteLine("Venda realizada com sucesso! ✅ ");
         }
 
         public void BuscarTodas()
@@ -68,7 +69,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             foreach (Venda venda in vendas)
             {
-                Console.WriteLine($"ID: {venda.Id} | Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Valor Total: {venda.ValorTotal}");
+                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Valor Total: {venda.ValorTotal}");
             }
         }
 
@@ -86,7 +87,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
                 return;
             }
 
-            Console.WriteLine($"ID: {venda.Id} | Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
         }
         public void BuscarPorData()
         {
@@ -113,7 +114,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             foreach (Venda venda in vendasEncontradas)
             {
-                Console.WriteLine($"ID: {venda.Id} | Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
+                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
             }
         }
 
@@ -127,7 +128,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             if (cliente == null)
             {
-                Console.WriteLine("Cliente não encontrado!");
+                Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
                 return;
             }
 
@@ -144,7 +145,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas.UI
 
             /*foreach (Venda venda in vendasEncontradas)
             {
-                Console.WriteLine($"ID: {venda.Id} | Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
+                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
             }*/
         }
     }
