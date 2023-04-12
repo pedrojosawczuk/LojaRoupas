@@ -1,25 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SistemaGerenciamentoVendasLojaRoupas
+﻿namespace SistemaGerenciamentoVendasLojaRoupas.Model
 {
     public class Produto
     {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public string Preco { get; set; }
-        public string Categoria { get; set; }
+        public int Id { get; set; }
+        private string _nome;
+        private string _descricao;
+        private double _preco;
+        public Categoria Categoria { get; set; }
 
+        public Produto(int id, string nome, string descricao, double preco, Categoria categoria)
+        {
+            Id = id;
+            _nome = nome;
+            _descricao = descricao;
+            _preco = preco;
+            Categoria = categoria;
+        }
+
+        public string Nome
+        {
+            get { return _nome; }
+            set { _nome = value; }
+        }
+
+        public string Descricao
+        {
+            get { return _descricao; }
+            set { _descricao = value; }
+        }
+
+        public double Preco
+        {
+            get { return _preco; }
+            set { _preco = value; }
+        }
     }
-    public Produto(string nome, string Descricao, string Preco, string Categoria)
-    {
-        Nome = nome
-        Descricao = descricao;
-        Preco = preco;
-        Categoria = categoria;
-    }
+
 }
-
