@@ -5,3 +5,10 @@ Para acessar o aplicativo:
 
 
 Copie o repositório e cole no seu aplicativo Visual Studio;
+
+
+
+Para compilar e executar o código utilize o seguinte comando
+```
+dotnet run --project SistemaGerenciamentoVendasLojaRoupas/SistemaGerenciamentoVendasLojaRoupas.csproj
+```
