@@ -20,32 +20,32 @@
         public string Nome
         {
             get { return _nome; }
-            set { _nome = value; }
+            set { this._nome = value; }
         }
 
         public string Descricao
         {
             get { return _descricao; }
-            set { _descricao = value; }
+            set { this._descricao = value; }
         }
 
         public double Preco
         {
             get { return _preco; }
-            set { _preco = value; }
+            set { this._preco = value; }
         }
         public Categoria Categoria
         {
             get { return _categoria; }
-            set { _categoria = value; }
+            set { this._categoria = value; }
         }
-/*
-        public int QuantidadeEstoque()
-        {
-            int vendasProdutos;
-            return vendasProdutos.Where(vp => vp.Produto.Id == this.Id).Sum(vp => vp.Quantidade);
-        }
-*/
+        /*
+                public int QuantidadeEstoque()
+                {
+                    int vendasProdutos;
+                    return vendasProdutos.Where(vp => vp.Produto.Id == this.Id).Sum(vp => vp.Quantidade);
+                }
+        */
     }
 
 }
