@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SistemaGerenciamentoVendasLojaRoupas
 {
@@ -9,7 +10,7 @@ namespace SistemaGerenciamentoVendasLojaRoupas
             List<Produto> produtos = new List<Produto>();
             List<Categoria> categorias = new List<Categoria>();*/
 
-            Console.WriteLine("🛍️ Sistema de Gerenciamento de Vendas Loja de Roupas 👗");
+            Console.WriteLine("🛍️ Sistema de Gerenciamento de Vendas Loja de Roupas👗");
 
             while (true)
             {
