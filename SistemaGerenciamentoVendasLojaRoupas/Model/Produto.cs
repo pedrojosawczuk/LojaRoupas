@@ -6,15 +6,15 @@
         private string _nome;
         private string _descricao;
         private double _preco;
-        public Categoria Categoria { get; set; }
+        private List<Categoria> _categoria;
 
-        public Produto(int id, string nome, string descricao, double preco, Categoria categoria)
+        public Produto(int id, string nome, string descricao, double preco, List<Categoria> categoria)
         {
             Id = id;
             _nome = nome;
             _descricao = descricao;
             _preco = preco;
-            Categoria = categoria;
+            _categoria = categoria;
         }
 
         public string Nome
@@ -33,6 +33,11 @@
         {
             get { return _preco; }
             set { _preco = value; }
+        }
+        public List<Categoria> Categorias
+        {
+            get { return _categoria; }
+            set { _categoria = value; }
         }
     }
 
