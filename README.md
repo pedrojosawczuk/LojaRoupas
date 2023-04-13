@@ -5,15 +5,15 @@
 ## ScreenShot
 
   <h5 align="center">Menu Inicial</h5>
-  <img alt="Screenshot Dark" width="100%" src="screenshots/menuprincipal.png"/>
+  <img alt="Screenshot Dark" src="screenshots/menuprincipal.png"/>
   <h5 align="center">Menu Cliente</h5>
-  <img alt="Screenshot Light" width="100%" src="screenshots/menucliente.png"/>
+  <img alt="Screenshot Light" src="screenshots/menucliente.png"/>
   <h5 align="center">Menu Categoria</h5>
-  <img alt="Screenshot Light" width="100%" src="screenshots/menucategoria.png"/>
+  <img alt="Screenshot Light" src="screenshots/menucategoria.png"/>
   <h5 align="center">Menu Produto</h5>
-  <img alt="Screenshot Light" width="100%" src="screenshots/menuproduto.png"/>
+  <img alt="Screenshot Light" src="screenshots/menuproduto.png"/>
   <h5 align="center">Menu Venda</h5>
-  <img alt="Screenshot Light" width="100%" src="screenshots/menuvenda.png"/>
+  <img alt="Screenshot Light" src="screenshots/menuvenda.png"/>
 
 ## Como Utilizar?
 
