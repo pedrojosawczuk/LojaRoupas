@@ -42,4 +42,15 @@ public class Venda
         get { return _valorTotal; }
         set { _valorTotal = value; }
     }
+
+    public double CalcularTotal(List<Produto> produtos)
+    {
+        double total = 0;
+        foreach (Produto produto in _produtos)
+        {
+            total += produto.Quantidade * produto.Preco;
+        }
+        _valorTotal = total;
+        return total;
+    }
 }

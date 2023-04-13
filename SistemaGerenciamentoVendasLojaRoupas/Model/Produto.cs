@@ -6,16 +6,18 @@ public class Produto
     private string _nome;
     private string _descricao;
     private double _preco;
+    private int _quantidade;
     private Categoria _categoria;
 
     public static List<Produto> produtos = new List<Produto>();
 
-    public Produto(int id, string nome, string descricao, double preco, Categoria categoria)
+    public Produto(int id, string nome, string descricao, double preco, int quantidade, Categoria categoria)
     {
         Id = id;
         this._nome = nome;
         this._descricao = descricao;
         this._preco = preco;
+        this._quantidade = quantidade;
         this._categoria = categoria;
     }
 
@@ -41,11 +43,14 @@ public class Produto
         get { return _categoria; }
         set { this._categoria = value; }
     }
-    /*
-            public int QuantidadeEstoque()
-            {
-                int vendasProdutos;
-                return vendasProdutos.Where(vp => vp.Produto.Id == this.Id).Sum(vp => vp.Quantidade);
-            }
-    */
+
+    public int Quantidade
+    {
+        get { return _quantidade; }
+        set { this._quantidade = value; }
+        /*
+        int vendasProdutos;
+        return vendasProdutos.Where(vp => vp.Produto.Id == this.Id).Sum(vp => vp.Quantidade);
+        */
+    }
 }

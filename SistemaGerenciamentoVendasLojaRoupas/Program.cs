@@ -10,24 +10,24 @@ class Program
     public static void Main(string[] args)
     {
         Console.WriteLine(" 🛍️ Loja de Roupas👗 ");
-
+        /*
         List<Categoria> categorias = new List<Categoria>();
         List<Produto> produtos = new List<Produto>();
         List<Cliente> clientes = new List<Cliente>();
-
+        */
         ClienteUI clienteUI = new ClienteUI();
         CategoriaUI categoriaUI = new CategoriaUI();
-        VendaUI vendaUI = new VendaUI(clientes, produtos);
-        ProdutoUI produtoUI = new ProdutoUI(categorias);
+        VendaUI vendaUI = new VendaUI();
+        ProdutoUI produtoUI = new ProdutoUI();
 
         while (true)
         {
             Console.WriteLine(" ");
             Console.WriteLine("Selecione uma opção:");
-            Console.WriteLine(" 1 - 👤 Cliente");
-            Console.WriteLine(" 2 - 🔠 Categoria");
-            Console.WriteLine(" 3 - 👠 Produto");
-            Console.WriteLine(" 4 - 🛒 Realizar Venda");
+            Console.WriteLine(" 1 - 👤 Clientes");
+            Console.WriteLine(" 2 - 🔠 Categorias");
+            Console.WriteLine(" 3 - 👠 Produtos");
+            Console.WriteLine(" 4 - 🛒 Vendas");
             Console.WriteLine(" 5 - 🚪🚶 Sair");
 
             try

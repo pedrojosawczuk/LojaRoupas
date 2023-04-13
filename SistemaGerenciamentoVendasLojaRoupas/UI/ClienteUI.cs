@@ -89,7 +89,7 @@ public class ClienteUI
     public void Remover()
     {
         Console.WriteLine(" 💀 REMOÇÃO DE CLIENTE 💀 ");
-        Console.Write("ID do cliente: ");
+        Console.Write(" -> ID do cliente: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
         Cliente? cliente = clientes.Find(c => c.Id == id);

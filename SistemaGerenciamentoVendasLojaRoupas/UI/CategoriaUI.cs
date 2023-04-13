@@ -44,18 +44,19 @@ public class CategoriaUI
         categoria.Nome = nome;
         categoria.Descricao = descricao;
 
-        Console.WriteLine(" 🧾C ategoria alterada com sucesso! ✅ ");
+        Console.WriteLine(" 🧾 Categoria Alterada com Sucesso! ✅ ");
     }
 
     public void BuscarTodas()
     {
         Console.WriteLine(" 📜 LISTA DE CATEGORIAS 📜 ");
-        Console.WriteLine("--------------------");
 
+        Console.WriteLine(" ");
         foreach (Categoria categoria in categorias)
         {
             Console.WriteLine($" {categoria.Id} - Nome: {categoria.Nome} | Descrição: {categoria.Descricao}");
         }
+        Console.WriteLine(" ");
     }
 
     public void BuscarPorId()

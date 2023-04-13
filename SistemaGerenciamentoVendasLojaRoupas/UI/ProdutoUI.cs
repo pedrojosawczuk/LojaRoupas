@@ -9,10 +9,10 @@ public class ProdutoUI
     List<Produto> produtos = Produto.produtos;
     List<Categoria> categorias = Categoria.categorias;
 
-    public ProdutoUI(List<Categoria> categorias)
+    /*public ProdutoUI(List<Categoria> categorias)
     {
         this.categorias = categorias;
-    }
+    }*/
 
     public void Cadastrar()
     {
@@ -23,6 +23,8 @@ public class ProdutoUI
         string descricao = Console.ReadLine() ?? "";
         Console.Write(" -> Preço: ");
         double preco = double.Parse(Console.ReadLine() ?? "");
+        Console.Write(" -> Quantidade: ");
+        int quantidade = int.Parse(Console.ReadLine() ?? "");
 
         Console.WriteLine(" ");
         foreach (Categoria categoria1 in categorias)
@@ -42,7 +44,7 @@ public class ProdutoUI
             return;
         }
 
-        Produto produto = new Produto(produtos.Count + 1, nome, descricao, preco, categoria);
+        Produto produto = new Produto(produtos.Count + 1, nome, descricao, preco, quantidade, categoria);
         produtos.Add(produto);
 
         Console.WriteLine(" 👗 Produto cadastrado com sucesso! ✅ ");
@@ -76,20 +78,25 @@ public class ProdutoUI
         }
         Console.WriteLine(" ");
 
+        Console.Write(" -> Quantidade: ");
+        int quantidade = int.Parse(Console.ReadLine() ?? "");
+
         Console.Write(" -> ID da categoria: ");
         int idCategoria = int.Parse(Console.ReadLine() ?? "0");
 
-        produto.Categoria = categorias.Find(c => c.Id == idCategoria);
+        Categoria? categoria1 = categorias.Find(c => c.Id == idCategoria);
 
-        if (produto.Categoria == null)
+        if (categoria1 == null)
         {
             Console.WriteLine(" 🤷‍♂️ Categoria não encontrada! 🗺️");
             return;
         }
+        produto.Categoria = categoria1;
 
         produto.Nome = nome;
         produto.Descricao = descricao;
         produto.Preco = preco;
+        produto.Quantidade = quantidade;
         produto.Categoria = produto.Categoria;
 
         Console.WriteLine("Produto alterado com sucesso! ✅ ");
@@ -103,7 +110,7 @@ public class ProdutoUI
         Console.WriteLine(" ");
         foreach (Produto produto in produtos)
         {
-            Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Categoria: {produto.Categoria.Nome}");
+            Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
         }
         Console.WriteLine(" ");
     }
@@ -122,7 +129,7 @@ public class ProdutoUI
             return;
         }
 
-        Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Categoria: {produto.Categoria.Nome}");
+        Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
     }
 
     public void Remover()
@@ -141,7 +148,7 @@ public class ProdutoUI
 
         produtos.Remove(produto);
 
-        Console.WriteLine("Produto removido com sucesso! 🗑️ ");
+        Console.WriteLine(" Produto removido com sucesso! 🗑️ ");
     }
 
 }

@@ -10,13 +10,14 @@ public class VendaUI
     List<Produto> produtos = Produto.produtos;
     List<Cliente> clientes = Cliente.clientes;
     List<Venda> vendas = Venda.vendas;
-    DateTime date = new DateTime();
 
+    /*
     public VendaUI(List<Cliente> clientes, List<Produto> produtos)
     {
         this.clientes = clientes;
         this.produtos = produtos;
     }
+    */
 
     public void RealizarVenda()
     {
@@ -59,22 +60,22 @@ public class VendaUI
         }
 
 
-        Console.Write(" -> Data: ");
+        Console.Write(" -> Data (dd/mm/aaaa): ");
         string date = Console.ReadLine() ?? "0";
-        /*
-        Console.Write("Quantidade: ");
+        
+        Console.Write(" -> Quantidade: ");
         int quantidade = int.Parse(Console.ReadLine() ?? "0");
 
-        if (quantidade > produto.QuantidadeEstoque)
+        if (quantidade > produto.Quantidade)
         {
             Console.WriteLine("Quantidade solicitada é maior do que a quantidade em estoque!");
             return;
-        }*/
+        }
 
-        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, date, 1);
+        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, date, quantidade);
         vendas.Add(venda);
 
-        /*produto.QuantidadeEstoque -= quantidade;*/
+        produto.Quantidade -= quantidade;
 
         Console.WriteLine("Venda realizada com sucesso! ✅ ");
     }
@@ -95,14 +96,14 @@ public class VendaUI
     public void BuscarPorId()
     {
         Console.WriteLine("BUSCA DE VENDA POR ID");
-        Console.Write("ID da venda: ");
+        Console.Write(" -> ID da venda: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
         Venda? venda = vendas.Find(v => v.Id == id);
 
         if (venda == null)
         {
-            Console.WriteLine("Venda não encontrada!");
+            Console.WriteLine(" Venda não encontrada!");
             return;
         }
 
@@ -111,7 +112,7 @@ public class VendaUI
     public void BuscarPorData()
     {
         Console.WriteLine("BUSCA DE VENDA POR DATA");
-        Console.Write(" Data (dd/mm/aaaa): ");
+        Console.Write(" -> Data (dd/mm/aaaa): ");
         string dataString = Console.ReadLine() ?? "0";
 
         List<Venda> vendasEncontradas = vendas.FindAll(v => v.Data == dataString);
@@ -149,12 +150,15 @@ public class VendaUI
             return;
         }
 
+        Console.WriteLine(" ");
         Console.WriteLine($" Foram encontradas {vendasEncontradas.Count} vendas para o cliente {cliente.Nome}:");
-        Console.WriteLine("--------------------");
 
-        /*foreach (Venda venda in vendasEncontradas)
+        Console.WriteLine(" ");
+        /*
+        foreach (Venda venda in vendasEncontradas)
         {
             Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
         }*/
+        Console.WriteLine(" ");
     }
 }
