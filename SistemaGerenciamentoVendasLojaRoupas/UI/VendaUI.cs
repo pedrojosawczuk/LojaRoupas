@@ -154,11 +154,11 @@ public class VendaUI
         Console.WriteLine($" Foram encontradas {vendasEncontradas.Count} vendas para o cliente {cliente.Nome}:");
 
         Console.WriteLine(" ");
-        /*
+        
         foreach (Venda venda in vendasEncontradas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
-        }*/
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal(venda.Produtos):F2}");
+        }
         Console.WriteLine(" ");
     }
 }
