@@ -2,151 +2,159 @@ using System;
 using System.Collections.Generic;
 using SistemaGerenciamentoVendasLojaRoupas.Model;
 
-namespace SistemaGerenciamentoVendasLojaRoupas.UI
-{
-    public class VendaUI
-    {
-        private List<Venda> vendas = new List<Venda>();
-        private List<Cliente> clientes = new List<Cliente>();
-        private List<Produto> produtos = new List<Produto>();
-        DateTime date = DateTime.Now;
+namespace SistemaGerenciamentoVendasLojaRoupas.UI;
 
-        /*public VendaUI(List<Venda> vendas, List<Cliente> clientes, List<Produto> produtos)
+public class VendaUI
+{
+    List<Categoria> categorias = Categoria.categorias;
+    List<Produto> produtos = Produto.produtos;
+    List<Cliente> clientes = Cliente.clientes;
+    List<Venda> vendas = Venda.vendas;
+    DateTime date = new DateTime();
+
+    public VendaUI(List<Cliente> clientes, List<Produto> produtos)
+    {
+        this.clientes = clientes;
+        this.produtos = produtos;
+    }
+
+    public void RealizarVenda()
+    {
+        Console.WriteLine("REALIZAÇÃO DE VENDA");
+
+        Console.WriteLine(" ");
+        foreach (Cliente cliente1 in clientes)
         {
-            this.vendas = vendas;
-            this.clientes = clientes;
-            this.produtos = produtos;
+            Console.WriteLine($" {cliente1.Id} - Nome: {cliente1.Nome} | Sobrenome: {cliente1.Sobrenome} | Endereco: {cliente1.Endereco} | Telefone: {cliente1.Telefone}");
+        }
+        Console.WriteLine(" ");
+
+        Console.Write(" -> Id do cliente: ");
+        int Id = int.Parse(Console.ReadLine() ?? "0");
+
+        Cliente? cliente = clientes.Find(c => c.Id == Id);
+
+        if (cliente == null)
+        {
+            Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
+            return;
+        }
+
+        Console.WriteLine(" ");
+        foreach (Produto produto1 in produtos)
+        {
+            Console.WriteLine($" {produto1.Id} - Nome: {produto1.Nome} | Descrição: {produto1.Descricao} | Preço: {produto1.Preco} | Categoria: {produto1.Categoria.Nome}");
+        }
+        Console.WriteLine(" ");
+
+        Console.Write(" -> ID do produto: ");
+        int idProduto = int.Parse(Console.ReadLine() ?? "0");
+
+        Produto? produto = produtos.Find(p => p.Id == idProduto);
+
+        if (produto == null)
+        {
+            Console.WriteLine(" 👗 Produto não encontrado! 🗺️  ");
+            return;
+        }
+
+
+        Console.Write(" -> Data: ");
+        string date = Console.ReadLine() ?? "0";
+        /*
+        Console.Write("Quantidade: ");
+        int quantidade = int.Parse(Console.ReadLine() ?? "0");
+
+        if (quantidade > produto.QuantidadeEstoque)
+        {
+            Console.WriteLine("Quantidade solicitada é maior do que a quantidade em estoque!");
+            return;
         }*/
 
-        public void RealizarVenda()
+        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, date, 1);
+        vendas.Add(venda);
+
+        /*produto.QuantidadeEstoque -= quantidade;*/
+
+        Console.WriteLine("Venda realizada com sucesso! ✅ ");
+    }
+
+    public void BuscarTodas()
+    {
+        Console.WriteLine("LISTA DE VENDAS");
+        Console.WriteLine("--------------------");
+
+        Console.WriteLine(" ");
+        foreach (Venda venda in vendas)
         {
-            Console.WriteLine("REALIZAÇÃO DE VENDA");
-            Console.Write("Id do cliente: ");
-            int Id = int.Parse(Console.ReadLine());
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Valor Total: {venda.ValorTotal}");
+        }
+        Console.WriteLine(" ");
+    }
 
-            Cliente cliente = clientes.Find(c => c.Id == Id);
+    public void BuscarPorId()
+    {
+        Console.WriteLine("BUSCA DE VENDA POR ID");
+        Console.Write("ID da venda: ");
+        int id = int.Parse(Console.ReadLine() ?? "0");
 
-            Console.WriteLine(cliente);
-            if (cliente == null)
-            {
-                Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
-                return;
-            }
+        Venda? venda = vendas.Find(v => v.Id == id);
 
-            Console.Write("ID do produto: ");
-            int idProduto = int.Parse(Console.ReadLine());
-
-            Produto produto = produtos.Find(p => p.Id == idProduto);
-
-            if (produto == null)
-            {
-                Console.WriteLine(" 👗 Produto não encontrado! 🗺️  ");
-                return;
-            }
-
-            /*
-            Console.Write("Quantidade: ");
-            int quantidade = int.Parse(Console.ReadLine());
-
-            if (quantidade > produto.QuantidadeEstoque)
-            {
-                Console.WriteLine("Quantidade solicitada é maior do que a quantidade em estoque!");
-                return;
-            }*/
-
-            Venda venda = new Venda(vendas.Count + 1, cliente, produtos, date, 1);
-            vendas.Add(venda);
-
-            /*produto.QuantidadeEstoque -= quantidade;*/
-
-            Console.WriteLine("Venda realizada com sucesso! ✅ ");
+        if (venda == null)
+        {
+            Console.WriteLine("Venda não encontrada!");
+            return;
         }
 
-        public void BuscarTodas()
-        {
-            Console.WriteLine("LISTA DE VENDAS");
-            Console.WriteLine("--------------------");
+        Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
+    }
+    public void BuscarPorData()
+    {
+        Console.WriteLine("BUSCA DE VENDA POR DATA");
+        Console.Write(" Data (dd/mm/aaaa): ");
+        string dataString = Console.ReadLine() ?? "0";
 
-            foreach (Venda venda in vendas)
-            {
-                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Valor Total: {venda.ValorTotal}");
-            }
+        List<Venda> vendasEncontradas = vendas.FindAll(v => v.Data == dataString);
+
+        Console.WriteLine($" Foram encontradas {vendasEncontradas.Count} vendas nesta data:");
+        Console.WriteLine("--------------------");
+
+        Console.WriteLine(" ");
+        foreach (Venda venda in vendasEncontradas)
+        {
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
+        }
+        Console.WriteLine(" ");
+    }
+
+    public void BuscarPorCliente()
+    {
+        Console.WriteLine("BUSCA DE VENDA POR CLIENTE");
+        Console.Write(" -> ID do cliente: ");
+        int idCliente = int.Parse(Console.ReadLine() ?? "0");
+
+        Cliente? cliente = clientes.Find(c => c.Id == idCliente);
+
+        if (cliente == null)
+        {
+            Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
+            return;
         }
 
-        public void BuscarPorId()
+        List<Venda> vendasEncontradas = vendas.FindAll(v => v.Cliente.Id == idCliente);
+
+        if (vendasEncontradas.Count == 0)
         {
-            Console.WriteLine("BUSCA DE VENDA POR ID");
-            Console.Write("ID da venda: ");
-            int id = int.Parse(Console.ReadLine());
-
-            Venda venda = vendas.Find(v => v.Id == id);
-
-            if (venda == null)
-            {
-                Console.WriteLine("Venda não encontrada!");
-                return;
-            }
-
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
-        }
-        public void BuscarPorData()
-        {
-            Console.WriteLine("BUSCA DE VENDA POR DATA");
-            Console.Write("Data (dd/mm/aaaa): ");
-            string dataString = Console.ReadLine();
-
-            DateTime data;
-
-            try
-            {
-                data = DateTime.ParseExact(dataString, "dd/MM/yyyy", null);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Data inválida!");
-                return;
-            }
-
-            List<Venda> vendasEncontradas = vendas.FindAll(v => v.Data.Date == data.Date);
-
-            Console.WriteLine($"Foram encontradas {vendasEncontradas.Count} vendas nesta data:");
-            Console.WriteLine("--------------------");
-
-            foreach (Venda venda in vendasEncontradas)
-            {
-                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
-            }
+            Console.WriteLine(" Nenhuma venda encontrada para este cliente!");
+            return;
         }
 
-        public void BuscarPorCliente()
+        Console.WriteLine($" Foram encontradas {vendasEncontradas.Count} vendas para o cliente {cliente.Nome}:");
+        Console.WriteLine("--------------------");
+
+        /*foreach (Venda venda in vendasEncontradas)
         {
-            Console.WriteLine("BUSCA DE VENDA POR CLIENTE");
-            Console.Write("ID do cliente: ");
-            int idCliente = int.Parse(Console.ReadLine());
-
-            Cliente cliente = clientes.Find(c => c.Id == idCliente);
-
-            if (cliente == null)
-            {
-                Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
-                return;
-            }
-
-            List<Venda> vendasEncontradas = vendas.FindAll(v => v.Cliente.Id == idCliente);
-
-            if (vendasEncontradas.Count == 0)
-            {
-                Console.WriteLine("Nenhuma venda encontrada para este cliente!");
-                return;
-            }
-
-            Console.WriteLine($"Foram encontradas {vendasEncontradas.Count} vendas para o cliente {cliente.Nome}:");
-            Console.WriteLine("--------------------");
-
-            /*foreach (Venda venda in vendasEncontradas)
-            {
-                Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
-            }*/
-        }
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal():F2}");
+        }*/
     }
 }
