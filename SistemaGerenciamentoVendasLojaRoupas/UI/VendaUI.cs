@@ -44,7 +44,7 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Produto produto1 in produtos)
         {
-            Console.WriteLine($" {produto1.Id} - Nome: {produto1.Nome} | Descrição: {produto1.Descricao} | Preço: {produto1.Preco} | Categoria: {produto1.Categoria.Nome}");
+            Console.WriteLine($" {produto1.Id} - Nome: {produto1.Nome} | Descrição: {produto1.Descricao} | Preço: {produto1.Preco} | Quantidade: {produto1.Quantidade} | Categoria: {produto1.Categoria.Nome}");
         }
         Console.WriteLine(" ");
 
@@ -59,10 +59,9 @@ public class VendaUI
             return;
         }
 
-
         Console.Write(" -> Data (dd/mm/aaaa): ");
         string date = Console.ReadLine() ?? "0";
-        
+
         Console.Write(" -> Quantidade: ");
         int quantidade = int.Parse(Console.ReadLine() ?? "0");
 
@@ -72,7 +71,7 @@ public class VendaUI
             return;
         }
 
-        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, date, quantidade);
+        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, produtos[0].Preco, quantidade, date);
         vendas.Add(venda);
 
         produto.Quantidade -= quantidade;
@@ -88,7 +87,7 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Venda venda in vendas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Valor Total: {venda.ValorTotal}");
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Produto: {venda.Produtos[0].Quantidade} | Valor Total: {venda.ValorTotal}");
         }
         Console.WriteLine(" ");
     }
@@ -154,7 +153,7 @@ public class VendaUI
         Console.WriteLine($" Foram encontradas {vendasEncontradas.Count} vendas para o cliente {cliente.Nome}:");
 
         Console.WriteLine(" ");
-        
+
         foreach (Venda venda in vendasEncontradas)
         {
             Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal(venda.Produtos):F2}");
