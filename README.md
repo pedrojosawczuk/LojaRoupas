@@ -55,4 +55,4 @@ Para compilar e executar o código utilize o seguinte comando
 dotnet run --project SistemaGerenciamentoVendasLojaRoupas/SistemaGerenciamentoVendasLojaRoupas.csproj
 ```
 
-### Alunos: Luana Copetti, Jonathan, Pedro J de O Sawczuk
+### Alunos: Luana Copetti, Jonathan Marinho, Pedro J de O Sawczuk
