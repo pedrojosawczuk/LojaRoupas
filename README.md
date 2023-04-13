@@ -4,15 +4,19 @@
 
 ## ScreenShot
 
-  <h5 align="center">Menu Inicial</h5>
+  ##### Menu Inicial
   <img alt="Screenshot Dark" src="screenshots/menuprincipal.png"/>
-  <h5 align="center">Menu Cliente</h5>
+
+  ##### Menu Cliente
   <img alt="Screenshot Light" src="screenshots/menucliente.png"/>
-  <h5 align="center">Menu Categoria</h5>
+
+  ##### Menu Categoria
   <img alt="Screenshot Light" src="screenshots/menucategoria.png"/>
-  <h5 align="center">Menu Produto</h5>
+
+  ##### Menu Produto
   <img alt="Screenshot Light" src="screenshots/menuproduto.png"/>
-  <h5 align="center">Menu Venda</h5>
+  
+  ##### Menu Venda
   <img alt="Screenshot Light" src="screenshots/menuvenda.png"/>
 
 ## Como Utilizar?
