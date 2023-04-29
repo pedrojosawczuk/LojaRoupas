@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SistemaGerenciamentoVendasLojaRoupas.Model;
+using LojaRoupas.Model;
 
-namespace SistemaGerenciamentoVendasLojaRoupas.UI;
+namespace LojaRoupas.UI;
 
 public class VendaUI
 {
@@ -21,7 +21,7 @@ public class VendaUI
 
     public void RealizarVenda()
     {
-        Console.WriteLine("REALIZAÇÃO DE VENDA");
+        Console.WriteLine(" 💳 REALIZAÇÃO DE VENDA 💳 ");
 
         Console.WriteLine(" ");
         foreach (Cliente cliente1 in clientes)
@@ -37,7 +37,7 @@ public class VendaUI
 
         if (cliente == null)
         {
-            Console.WriteLine(" 👤 Cliente não encontrado! 🗺️  ");
+            Console.WriteLine(" 👤 Cliente não encontrado! 🗺️ ");
             return;
         }
 
@@ -55,7 +55,7 @@ public class VendaUI
 
         if (produto == null)
         {
-            Console.WriteLine(" 👗 Produto não encontrado! 🗺️  ");
+            Console.WriteLine(" 👗 Produto não encontrado! 🗺️ ");
             return;
         }
 
@@ -71,30 +71,29 @@ public class VendaUI
             return;
         }
 
-        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, produtos[0].Preco, quantidade, date);
+        Venda venda = new Venda(vendas.Count + 1, cliente, produtos, produto.Preco, quantidade, date);
         vendas.Add(venda);
 
         produto.Quantidade -= quantidade;
 
-        Console.WriteLine("Venda realizada com sucesso! ✅ ");
+        Console.WriteLine(" 💳 Venda realizada com sucesso! ✅ ");
     }
 
     public void BuscarTodas()
     {
-        Console.WriteLine("LISTA DE VENDAS");
-        Console.WriteLine("--------------------");
+        Console.WriteLine(" 📜 TODAS AS VENDAS 📜 ");
 
         Console.WriteLine(" ");
         foreach (Venda venda in vendas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} | Produto: {venda.Produtos[0].Quantidade} | Valor Total: {venda.ValorTotal}");
+            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos} | Produto: {venda.Produtos} | Valor Total: {venda.ValorTotal}");
         }
         Console.WriteLine(" ");
     }
 
     public void BuscarPorId()
     {
-        Console.WriteLine("BUSCA DE VENDA POR ID");
+        Console.WriteLine(" 🕵️‍♀️ BUSCA DE VENDA POR ID 🪪 ");
         Console.Write(" -> ID da venda: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
@@ -102,7 +101,7 @@ public class VendaUI
 
         if (venda == null)
         {
-            Console.WriteLine(" Venda não encontrada!");
+            Console.WriteLine(" 💳 Venda não encontrada! 🗺️ ");
             return;
         }
 
@@ -110,7 +109,7 @@ public class VendaUI
     }
     public void BuscarPorData()
     {
-        Console.WriteLine("BUSCA DE VENDA POR DATA");
+        Console.WriteLine(" 🕵️‍♀️ BUSCA DE VENDA POR DATA 📅 ");
         Console.Write(" -> Data (dd/mm/aaaa): ");
         string dataString = Console.ReadLine() ?? "0";
 
@@ -129,7 +128,7 @@ public class VendaUI
 
     public void BuscarPorCliente()
     {
-        Console.WriteLine("BUSCA DE VENDA POR CLIENTE");
+        Console.WriteLine(" 🕵️‍♀️ BUSCA DE VENDA POR CLIENTE 👤 ");
         Console.Write(" -> ID do cliente: ");
         int idCliente = int.Parse(Console.ReadLine() ?? "0");
 
@@ -145,7 +144,7 @@ public class VendaUI
 
         if (vendasEncontradas.Count == 0)
         {
-            Console.WriteLine(" Nenhuma venda encontrada para este cliente!");
+            Console.WriteLine(" 💳 Nenhuma venda encontrada para este cliente! 🗺️ ");
             return;
         }
 

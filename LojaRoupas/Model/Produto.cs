@@ -1,4 +1,4 @@
-﻿namespace SistemaGerenciamentoVendasLojaRoupas.Model;
+﻿namespace LojaRoupas.Model;
 
 public class Produto
 {

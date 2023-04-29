@@ -1,4 +1,4 @@
-namespace SistemaGerenciamentoVendasLojaRoupas.Model;
+namespace LojaRoupas.Model;
 
 public class Venda
 {
@@ -53,7 +53,7 @@ public class Venda
 
     public double ValorTotal
     {
-        get { return CalcularTotal(this._produtos);}
+        get { return CalcularTotal(this._produtos); }
         set { this._valorTotal = CalcularTotal(this._produtos); }
     }
 
@@ -62,7 +62,7 @@ public class Venda
         double total = 0;
         foreach (Produto produto in _produtos)
         {
-            total += this._quantidade * this._preco;
+            total += produto.Quantidade * produto.Preco;
         }
         _valorTotal = total;
         return total;

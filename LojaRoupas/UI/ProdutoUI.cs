@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SistemaGerenciamentoVendasLojaRoupas.Model;
+using LojaRoupas.Model;
 
-namespace SistemaGerenciamentoVendasLojaRoupas.UI;
+namespace LojaRoupas.UI;
 
 public class ProdutoUI
 {
@@ -52,7 +52,7 @@ public class ProdutoUI
 
     public void Alterar()
     {
-        Console.WriteLine("ALTERAÇÃO DE PRODUTO");
+        Console.WriteLine(" 👗 ALTERAÇÃO DE PRODUTO");
         Console.Write(" -> ID do produto: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
@@ -104,8 +104,7 @@ public class ProdutoUI
 
     public void BuscarTodos()
     {
-        Console.WriteLine(" 📜 LISTA DE PRODUTOS 📜 ");
-        Console.WriteLine("--------------------");
+        Console.WriteLine(" 📜 TODOS OS PRODUTOS 📜 ");
 
         Console.WriteLine(" ");
         foreach (Produto produto in produtos)

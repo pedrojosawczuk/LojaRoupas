@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SistemaGerenciamentoVendasLojaRoupas.Model;
+using LojaRoupas.Model;
 
-namespace SistemaGerenciamentoVendasLojaRoupas.UI;
+namespace LojaRoupas.UI;
 
 public class CategoriaUI
 {
@@ -49,7 +49,7 @@ public class CategoriaUI
 
     public void BuscarTodas()
     {
-        Console.WriteLine(" 📜 LISTA DE CATEGORIAS 📜 ");
+        Console.WriteLine(" 📜 TODAS AS CATEGORIAS 📜 ");
 
         Console.WriteLine(" ");
         foreach (Categoria categoria in categorias)

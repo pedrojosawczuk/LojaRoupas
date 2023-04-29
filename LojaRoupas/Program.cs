@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using SistemaGerenciamentoVendasLojaRoupas.Model;
-using SistemaGerenciamentoVendasLojaRoupas.UI;
+using LojaRoupas.Model;
+using LojaRoupas.UI;
 
-namespace SistemaGerenciamentoVendasLojaRoupas;
+namespace LojaRoupas;
 
 class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine(" 🛍️ Loja de Roupas👗 ");
         /*
         List<Categoria> categorias = new List<Categoria>();
         List<Produto> produtos = new List<Produto>();
@@ -22,13 +21,16 @@ class Program
 
         while (true)
         {
+            //Console.Clear();
+            Console.WriteLine(" 🛍️ Loja de Roupas👗 ");
             Console.WriteLine(" ");
-            Console.WriteLine("Selecione uma opção:");
+            Console.WriteLine("Selecione uma opção: ");
             Console.WriteLine(" 1 - 👤 Clientes");
             Console.WriteLine(" 2 - 🔠 Categorias");
-            Console.WriteLine(" 3 - 👠 Produtos");
-            Console.WriteLine(" 4 - 🛒 Vendas");
+            Console.WriteLine(" 3 - 👗 Produtos");
+            Console.WriteLine(" 4 - 💳 Vendas");
             Console.WriteLine(" 5 - 🚪🚶 Sair");
+            Console.Write(" 👉 ");
 
             try
             {
@@ -37,15 +39,17 @@ class Program
                 switch (opcao)
                 {
                     case 1:
-                        Console.WriteLine(" ");
+                        //Console.Clear();
                         Console.WriteLine(" 👤 CLIENTE 👤 ");
-                        Console.WriteLine("Selecione uma opção:");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Selecione uma opção: ");
                         Console.WriteLine(" 1 - Cadastrar Cliente");
                         Console.WriteLine(" 2 - Alterar Cliente");
                         Console.WriteLine(" 3 - Listar Todos os Clientes");
                         Console.WriteLine(" 4 - Buscar Cliente por Id");
                         Console.WriteLine(" 5 - Remover Cliente");
                         Console.WriteLine(" 6 - Voltar");
+                        Console.Write(" 👉 ");
 
                         try
                         {
@@ -79,20 +83,22 @@ class Program
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(" ❌ ERROR: " + ex.Message);
+                            Console.WriteLine(" ❌ ERROR: " + ex.Message + " ❌ ");
                         }
                         break;
 
                     case 2:
-                        Console.WriteLine(" ");
+                        //Console.Clear();
                         Console.WriteLine(" 🔠 CATEGORIA 🔠 ");
-                        Console.WriteLine("Selecione uma opção:");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Selecione uma opção: ");
                         Console.WriteLine(" 1 - Cadastrar Categoria");
                         Console.WriteLine(" 2 - Alterar Categoria");
                         Console.WriteLine(" 3 - Buscar Todas as Categoria");
                         Console.WriteLine(" 4 - Buscar Categoria por Id");
                         Console.WriteLine(" 5 - Remover Categoria");
                         Console.WriteLine(" 6 - Voltar");
+                        Console.Write(" 👉 ");
 
                         try
                         {
@@ -126,20 +132,22 @@ class Program
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(" ❌ ERROR: " + ex.Message);
+                            Console.WriteLine(" ❌ ERROR: " + ex.Message + " ❌ ");
                         }
                         break;
 
                     case 3:
+                        //Console.Clear();
+                        Console.WriteLine(" 👗 PRODUTO 👗 ");
                         Console.WriteLine(" ");
-                        Console.WriteLine(" 👕 PRODUTO 👖 ");
-                        Console.WriteLine("Selecione uma opção:");
+                        Console.WriteLine("Selecione uma opção: ");
                         Console.WriteLine(" 1 - Cadastrar Produto");
                         Console.WriteLine(" 2 - Alterar Produto");
                         Console.WriteLine(" 3 - Buscar Todos os Produtos");
                         Console.WriteLine(" 4 - Buscar Produto por Id");
                         Console.WriteLine(" 5 - Remover Produto");
                         Console.WriteLine(" 6 - Voltar");
+                        Console.Write(" 👉 ");
 
                         try
                         {
@@ -171,20 +179,21 @@ class Program
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(" ❌ ERROR: " + ex.Message);
+                            Console.WriteLine(" ❌ ERROR: " + ex.Message + " ❌ ");
                         }
                         break;
 
                     case 4:
-                        Console.WriteLine(" ");
                         Console.WriteLine(" 💳 VENDA 💳 ");
-                        Console.WriteLine("Selecione uma opção:");
+                        Console.WriteLine(" ");
+                        Console.WriteLine("Selecione uma opção: ");
                         Console.WriteLine(" 1 - Realizar Venda");
                         Console.WriteLine(" 2 - Buscar Todas as Vendas");
                         Console.WriteLine(" 3 - Buscar Venda por Id");
                         Console.WriteLine(" 4 - Buscar Venda por Data");
                         Console.WriteLine(" 5 - Buscar por Cliente");
                         Console.WriteLine(" 6 - Voltar");
+                        Console.Write(" 👉 ");
                         try
                         {
                             opcao = int.Parse(Console.ReadLine() ?? "0");
@@ -215,11 +224,12 @@ class Program
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(" ❌ ERROR: " + ex.Message);
+                            Console.WriteLine(" ❌ ERROR: " + ex.Message + " ❌ ");
                         }
                         break;
 
                     case 5:
+                        Console.Clear();
                         Console.WriteLine(" 👋 Tchau, tchau...");
                         return;
                     default:
@@ -230,7 +240,7 @@ class Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine(" ❌ ERROR: " + ex.Message);
+                Console.WriteLine(" ❌ ERROR: " + ex.Message + " ❌ ");
             }
         }
     }

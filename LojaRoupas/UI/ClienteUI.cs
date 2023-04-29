@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SistemaGerenciamentoVendasLojaRoupas.Model;
+using LojaRoupas.Model;
 
-namespace SistemaGerenciamentoVendasLojaRoupas.UI;
+namespace LojaRoupas.UI;
 
 public class ClienteUI
 {
@@ -59,7 +59,7 @@ public class ClienteUI
 
     public void BuscarTodas()
     {
-        Console.WriteLine(" 📜 LISTA DE CLIENTES 📜 ");
+        Console.WriteLine(" 📜 TODOS OS CLIENTES 📜 ");
 
         Console.WriteLine(" ");
         foreach (Cliente cliente in clientes)
