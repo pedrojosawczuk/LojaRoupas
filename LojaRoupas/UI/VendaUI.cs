@@ -26,14 +26,14 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Cliente cliente1 in clientes)
         {
-            Console.WriteLine($" {cliente1.Id} - Nome: {cliente1.Nome} | Sobrenome: {cliente1.Sobrenome} | Endereco: {cliente1.Endereco} | Telefone: {cliente1.Telefone}");
+            Console.WriteLine($" {cliente1.ClienteID} - Nome: {cliente1.Nome} | Sobrenome: {cliente1.Sobrenome} | Endereco: {cliente1.Endereco} | Telefone: {cliente1.Telefone}");
         }
         Console.WriteLine(" ");
 
         Console.Write(" -> Id do cliente: ");
         int Id = int.Parse(Console.ReadLine() ?? "0");
 
-        Cliente? cliente = clientes.Find(c => c.Id == Id);
+        Cliente? cliente = clientes.Find(c => c.ClienteID == Id);
 
         if (cliente == null)
         {
@@ -44,14 +44,14 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Produto produto1 in produtos)
         {
-            Console.WriteLine($" {produto1.Id} - Nome: {produto1.Nome} | Descrição: {produto1.Descricao} | Preço: {produto1.Preco} | Quantidade: {produto1.Quantidade} | Categoria: {produto1.Categoria.Nome}");
+            Console.WriteLine($" {produto1.ProdutoID} - Nome: {produto1.Nome} | Descrição: {produto1.Descricao} | Preço: {produto1.Preco} | Quantidade: {produto1.Quantidade} | Categoria: {produto1.Categoria.Nome}");
         }
         Console.WriteLine(" ");
 
         Console.Write(" -> ID do produto: ");
         int idProduto = int.Parse(Console.ReadLine() ?? "0");
 
-        Produto? produto = produtos.Find(p => p.Id == idProduto);
+        Produto? produto = produtos.Find(p => p.ProdutoID == idProduto);
 
         if (produto == null)
         {
@@ -86,7 +86,7 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Venda venda in vendas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos} | Produto: {venda.Produtos} | Valor Total: {venda.ValorTotal}");
+            Console.WriteLine($" {venda.VendaID} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos} | Produto: {venda.Produtos} | Valor Total: {venda.ValorTotal}");
         }
         Console.WriteLine(" ");
     }
@@ -97,7 +97,7 @@ public class VendaUI
         Console.Write(" -> ID da venda: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Venda? venda = vendas.Find(v => v.Id == id);
+        Venda? venda = vendas.Find(v => v.VendaID == id);
 
         if (venda == null)
         {
@@ -105,7 +105,7 @@ public class VendaUI
             return;
         }
 
-        Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
+        Console.WriteLine($" {venda.VendaID} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Produto: {venda.Produtos[0].Nome} |  Valor Total: {venda.ValorTotal}");
     }
     public void BuscarPorData()
     {
@@ -121,7 +121,7 @@ public class VendaUI
         Console.WriteLine(" ");
         foreach (Venda venda in vendasEncontradas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
+            Console.WriteLine($" {venda.VendaID} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
         }
         Console.WriteLine(" ");
     }
@@ -132,7 +132,7 @@ public class VendaUI
         Console.Write(" -> ID do cliente: ");
         int idCliente = int.Parse(Console.ReadLine() ?? "0");
 
-        Cliente? cliente = clientes.Find(c => c.Id == idCliente);
+        Cliente? cliente = clientes.Find(c => c.ClienteID == idCliente);
 
         if (cliente == null)
         {
@@ -140,7 +140,7 @@ public class VendaUI
             return;
         }
 
-        List<Venda> vendasEncontradas = vendas.FindAll(v => v.Cliente.Id == idCliente);
+        List<Venda> vendasEncontradas = vendas.FindAll(v => v.Cliente.ClienteID == idCliente);
 
         if (vendasEncontradas.Count == 0)
         {
@@ -155,7 +155,7 @@ public class VendaUI
 
         foreach (Venda venda in vendasEncontradas)
         {
-            Console.WriteLine($" {venda.Id} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal(venda.Produtos):F2}");
+            Console.WriteLine($" {venda.VendaID} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome} | Total: R${venda.CalcularTotal(venda.Produtos):F2}");
         }
         Console.WriteLine(" ");
     }

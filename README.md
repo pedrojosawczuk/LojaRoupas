@@ -20,7 +20,7 @@
 
   <img alt="Screenshot Light" src="screenshots/menuproduto.png"/>
   
-  ##### Menu Venda
+##### Menu Venda
   <img alt="Screenshot Light" src="screenshots/menuvenda.png"/>
 
 ## Como Utilizar?

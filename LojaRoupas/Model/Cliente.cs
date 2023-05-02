@@ -2,7 +2,7 @@
 
 public class Cliente
 {
-    public int Id { get; set; }
+    public long ClienteID;
     private string _nome;
     private string _sobrenome;
     private string _endereco;
@@ -10,33 +10,33 @@ public class Cliente
 
     public static List<Cliente> clientes = new List<Cliente>();
 
-    public Cliente(int id, string nome, string sobrenome, string endereco, string telefone)
+    public Cliente(long clienteID, string nome, string sobrenome, string endereco, string telefone)
     {
-        Id = id;
-        this._nome = nome;
-        this._sobrenome = sobrenome;
-        this._endereco = endereco;
-        this._telefone = telefone;
+        ClienteID = clienteID;
+        _nome = nome;
+        _sobrenome = sobrenome;
+        _endereco = endereco;
+        _telefone = telefone;
     }
 
     public string Nome
     {
         get { return _nome; }
-        set { this._nome = value; }
+        set { _nome = value; }
     }
     public string Sobrenome
     {
         get { return _sobrenome; }
-        set { this._sobrenome = value; }
+        set { _sobrenome = value; }
     }
     public string Endereco
     {
         get { return _endereco; }
-        set { this._endereco = value; }
+        set { _endereco = value; }
     }
     public string Telefone
     {
         get { return _telefone; }
-        set { this._telefone = value; }
+        set { _telefone = value; }
     }
 }

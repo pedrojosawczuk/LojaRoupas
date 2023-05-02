@@ -28,7 +28,7 @@ public class CategoriaUI
         Console.Write(" -> ID da categoria: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Categoria? categoria = categorias.Find(c => c.Id == id);
+        Categoria? categoria = categorias.Find(c => c.CategoriaID == id);
 
         if (categoria == null)
         {
@@ -54,7 +54,7 @@ public class CategoriaUI
         Console.WriteLine(" ");
         foreach (Categoria categoria in categorias)
         {
-            Console.WriteLine($" {categoria.Id} - Nome: {categoria.Nome} | Descrição: {categoria.Descricao}");
+            Console.WriteLine($" {categoria.CategoriaID} - Nome: {categoria.Nome} | Descrição: {categoria.Descricao}");
         }
         Console.WriteLine(" ");
     }
@@ -65,7 +65,7 @@ public class CategoriaUI
         Console.Write(" -> ID da categoria: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Categoria? categoria = categorias.Find(c => c.Id == id);
+        Categoria? categoria = categorias.Find(c => c.CategoriaID == id);
 
         if (categoria == null)
         {
@@ -73,7 +73,7 @@ public class CategoriaUI
             return;
         }
 
-        Console.WriteLine($" {categoria.Id} - Nome: {categoria.Nome} | Descrição: {categoria.Descricao}");
+        Console.WriteLine($" {categoria.CategoriaID} - Nome: {categoria.Nome} | Descrição: {categoria.Descricao}");
     }
 
     public void Remover()
@@ -81,7 +81,7 @@ public class CategoriaUI
         Console.WriteLine("REMOÇÃO DE CATEGORIA");
         Console.Write(" -> ID da categoria: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
-        Categoria? categoria = categorias.Find(c => c.Id == id);
+        Categoria? categoria = categorias.Find(c => c.CategoriaID == id);
 
         if (categoria == null)
         {

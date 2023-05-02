@@ -29,14 +29,14 @@ public class ProdutoUI
         Console.WriteLine(" ");
         foreach (Categoria categoria1 in categorias)
         {
-            Console.WriteLine($" {categoria1.Id} - {categoria1.Nome}");
+            Console.WriteLine($" {categoria1.CategoriaID} - {categoria1.Nome}");
         }
         Console.WriteLine(" ");
 
         Console.Write(" -> ID da categoria: ");
         int idCategoria = int.Parse(Console.ReadLine() ?? "0");
 
-        Categoria? categoria = categorias.Find(c => c.Id == idCategoria);
+        Categoria? categoria = categorias.Find(c => c.CategoriaID == idCategoria);
 
         if (categoria == null)
         {
@@ -56,7 +56,7 @@ public class ProdutoUI
         Console.Write(" -> ID do produto: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Produto? produto = produtos.Find(p => p.Id == id);
+        Produto? produto = produtos.Find(p => p.ProdutoID == id);
 
         if (produto == null)
         {
@@ -74,7 +74,7 @@ public class ProdutoUI
         Console.WriteLine(" ");
         foreach (Categoria categoria in categorias)
         {
-            Console.WriteLine($" {categoria.Id} - {categoria.Nome}");
+            Console.WriteLine($" {categoria.CategoriaID} - {categoria.Nome}");
         }
         Console.WriteLine(" ");
 
@@ -84,7 +84,7 @@ public class ProdutoUI
         Console.Write(" -> ID da categoria: ");
         int idCategoria = int.Parse(Console.ReadLine() ?? "0");
 
-        Categoria? categoria1 = categorias.Find(c => c.Id == idCategoria);
+        Categoria? categoria1 = categorias.Find(c => c.CategoriaID == idCategoria);
 
         if (categoria1 == null)
         {
@@ -109,7 +109,7 @@ public class ProdutoUI
         Console.WriteLine(" ");
         foreach (Produto produto in produtos)
         {
-            Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
+            Console.WriteLine($" {produto.ProdutoID} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
         }
         Console.WriteLine(" ");
     }
@@ -120,7 +120,7 @@ public class ProdutoUI
         Console.Write(" -> ID do produto: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Produto? produto = produtos.Find(p => p.Id == id);
+        Produto? produto = produtos.Find(p => p.ProdutoID == id);
 
         if (produto == null)
         {
@@ -128,7 +128,7 @@ public class ProdutoUI
             return;
         }
 
-        Console.WriteLine($" {produto.Id} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
+        Console.WriteLine($" {produto.ProdutoID} - Nome: {produto.Nome} | Descrição: {produto.Descricao} | Preço: {produto.Preco} | Quantidade: {produto.Quantidade} | Categoria: {produto.Categoria.Nome}");
     }
 
     public void Remover()
@@ -137,7 +137,7 @@ public class ProdutoUI
         Console.Write(" -> ID do produto: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Produto? produto = produtos.Find(p => p.Id == id);
+        Produto? produto = produtos.Find(p => p.ProdutoID == id);
 
         if (produto == null)
         {

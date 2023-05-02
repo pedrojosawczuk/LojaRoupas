@@ -32,7 +32,7 @@ public class ClienteUI
         Console.Write(" -> ID do cliente: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Cliente? cliente = clientes.Find(c => c.Id == id);
+        Cliente? cliente = clientes.Find(c => c.ClienteID == id);
 
         if (cliente == null)
         {
@@ -64,7 +64,7 @@ public class ClienteUI
         Console.WriteLine(" ");
         foreach (Cliente cliente in clientes)
         {
-            Console.WriteLine($" {cliente.Id} - Nome: {cliente.Nome} | Sobrenome: {cliente.Sobrenome} | Endereco: {cliente.Endereco} | Telefone: {cliente.Telefone}");
+            Console.WriteLine($" {cliente.ClienteID} - Nome: {cliente.Nome} | Sobrenome: {cliente.Sobrenome} | Endereco: {cliente.Endereco} | Telefone: {cliente.Telefone}");
         }
         Console.WriteLine(" ");
     }
@@ -75,7 +75,7 @@ public class ClienteUI
         Console.Write(" -> ID do cliente: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Cliente? cliente = clientes.Find(c => c.Id == id);
+        Cliente? cliente = clientes.Find(c => c.ClienteID == id);
 
         if (cliente == null)
         {
@@ -83,7 +83,7 @@ public class ClienteUI
             return;
         }
 
-        Console.WriteLine($" {cliente.Id} - Nome: {cliente.Nome} | Sobrenome: {cliente.Sobrenome} | Endereco: {cliente.Endereco} | Telefone: {cliente.Telefone}");
+        Console.WriteLine($" {cliente.ClienteID} - Nome: {cliente.Nome} | Sobrenome: {cliente.Sobrenome} | Endereco: {cliente.Endereco} | Telefone: {cliente.Telefone}");
     }
 
     public void Remover()
@@ -92,7 +92,7 @@ public class ClienteUI
         Console.Write(" -> ID do cliente: ");
         int id = int.Parse(Console.ReadLine() ?? "0");
 
-        Cliente? cliente = clientes.Find(c => c.Id == id);
+        Cliente? cliente = clientes.Find(c => c.ClienteID == id);
 
         if (cliente == null)
         {
