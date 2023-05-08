@@ -1,68 +1,49 @@
 namespace LojaRoupas.Model;
 
-public class Venda
+public class VendaModel
 {
     public long VendaID;
-    private Cliente _cliente;
-    private List<Produto> _produtos;
-    private double _preco;
-    private int _quantidade;
-    private string _data;
+    private ClienteModel _cliente;
+    private List<VendaProdutoModel> _produtos;
+    private DateOnly _data;
     private double _valorTotal;
 
-    public static List<Venda> vendas = new List<Venda>();
-
-    public Venda(long vendaID, Cliente cliente, List<Produto> produtos, double preco, int quantidade, string data)
+    public VendaModel(long vendaID, ClienteModel cliente, List<VendaProdutoModel> produtos, DateOnly data)
     {
         VendaID = vendaID;
         _cliente = cliente;
         _produtos = produtos;
-        _preco = preco;
-        _quantidade = quantidade;
         _data = data;
         CalcularTotal(_produtos);
     }
 
-    public Cliente Cliente
+    public ClienteModel Cliente
     {
         get { return _cliente; }
         set { _cliente = value; }
     }
-
-    public List<Produto> Produtos
+    public List<VendaProdutoModel> Produtos
     {
         get { return _produtos; }
         set { _produtos = value; }
     }
-
-    private double Preco
-    {
-        get { return _preco; }
-        set { _preco = value; }
-    }
-    private int Quantidade
-    {
-        get { return _quantidade; }
-        set { _quantidade = value; }
-    }
-    public string Data
+    public DateOnly Data
     {
         get { return _data; }
         set { _data = value; }
     }
-
     public double ValorTotal
     {
         get { return CalcularTotal(_produtos); }
         set { _valorTotal = CalcularTotal(_produtos); }
     }
 
-    public double CalcularTotal(List<Produto> produtos)
+    private double CalcularTotal(List<VendaProdutoModel> produtos)
     {
         double total = 0;
-        foreach (Produto produto in _produtos)
+        foreach (VendaProdutoModel produto in _produtos)
         {
-            total += produto.Quantidade * produto.Preco;
+            total += produto.Subtotal;
         }
         _valorTotal = total;
         return total;

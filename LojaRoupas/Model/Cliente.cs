@@ -1,6 +1,6 @@
 ﻿namespace LojaRoupas.Model;
 
-public class Cliente
+public class ClienteModel
 {
     public long ClienteID;
     private string _nome;
@@ -8,9 +8,7 @@ public class Cliente
     private string _endereco;
     private string _telefone;
 
-    public static List<Cliente> clientes = new List<Cliente>();
-
-    public Cliente(long clienteID, string nome, string sobrenome, string endereco, string telefone)
+    public ClienteModel(long clienteID, string nome, string sobrenome, string endereco, string telefone)
     {
         ClienteID = clienteID;
         _nome = nome;
@@ -38,5 +36,12 @@ public class Cliente
     {
         get { return _telefone; }
         set { _telefone = value; }
+    }
+    public string NomeCompleto
+    {
+        get
+        {
+            return $"{Nome} {Sobrenome}";
+        }
     }
 }

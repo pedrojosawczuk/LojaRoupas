@@ -1,14 +1,12 @@
 ﻿namespace LojaRoupas.Model;
 
-public class Categoria
+public class CategoriaModel
 {
     public long CategoriaID;
     private string _nome;
     private string _descricao;
 
-    public static List<Categoria> categorias = new List<Categoria>();
-
-    public Categoria(long categoriaID, string nome, string descricao)
+    public CategoriaModel(long categoriaID, string nome, string descricao)
     {
         CategoriaID = categoriaID;
         _nome = nome;
@@ -20,7 +18,6 @@ public class Categoria
         get { return _nome; }
         set { _nome = value; }
     }
-
     public string Descricao
     {
         get { return _descricao; }

@@ -1,17 +1,15 @@
 ﻿namespace LojaRoupas.Model;
 
-public class Produto
+public class ProdutoModel
 {
     public long ProdutoID;
     private string _nome;
     private string _descricao;
     private double _preco;
-    private int _quantidade;
-    private Categoria _categoria;
+    private double _quantidade;
+    private CategoriaModel _categoria;
 
-    public static List<Produto> produtos = new List<Produto>();
-
-    public Produto(long produtoID, string nome, string descricao, double preco, int quantidade, Categoria categoria)
+    public ProdutoModel(long produtoID, string nome, string descricao, double preco, int quantidade, CategoriaModel categoria)
     {
         ProdutoID = produtoID;
         _nome = nome;
@@ -26,25 +24,22 @@ public class Produto
         get { return _nome; }
         set { _nome = value; }
     }
-
     public string Descricao
     {
         get { return _descricao; }
         set { _descricao = value; }
     }
-
     public double Preco
     {
         get { return _preco; }
         set { _preco = value; }
     }
-    public Categoria Categoria
+    public CategoriaModel Categoria
     {
         get { return _categoria; }
         set { _categoria = value; }
     }
-
-    public int Quantidade
+    public double Quantidade
     {
         get { return _quantidade; }
         set { _quantidade = value; }
