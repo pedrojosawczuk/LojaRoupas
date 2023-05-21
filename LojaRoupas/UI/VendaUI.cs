@@ -1,3 +1,5 @@
+using System.Globalization;
+
 using LojaRoupas.Model;
 using LojaRoupas.UI.Produto;
 using LojaRoupas.UI.Cliente;
@@ -88,9 +90,9 @@ public class VendaUI
         listarClientes.ListarClientes(_clientes);
 
         Console.Write(" -> Id do cliente: ");
-        int Id = int.Parse(Console.ReadLine() ?? "0");
+        int clienteId = int.Parse(Console.ReadLine() ?? "0");
 
-        ClienteModel? cliente = _clientes.Find(c => c.ClienteID == Id);
+        ClienteModel cliente = _clientes.FirstOrDefault(c => c.ClienteID == clienteId);
 
         if (cliente == null)
         {
@@ -100,18 +102,28 @@ public class VendaUI
         }
 
         Console.Write(" -> Data (dd/mm/aaaa): ");
-        string date = Console.ReadLine() ?? "0";
+        string dataStr = Console.ReadLine() ?? "0";
+        DateOnly data;
 
-        while (true)
+        if (!DateOnly.TryParseExact(dataStr, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data))
+        {
+            Console.WriteLine(" Data inválida. Certifique-se de inserir uma data no formato dd/mm/aaaa.");
+            return;
+        }
+
+        List<VendaProdutoModel> vendaProdutos = new List<VendaProdutoModel>();
+
+        bool continuar = true;
+        do
         {
             ProdutoUI listarProduto = new ProdutoUI(_produtos, _categoria);
             Console.Clear();
             listarProduto.ListarProdutos(_produtos);
 
             Console.Write(" -> ID do produto: ");
-            int idProduto = int.Parse(Console.ReadLine() ?? "0");
+            int produtoId = int.Parse(Console.ReadLine() ?? "0");
 
-            ProdutoModel? produto = _produtos.Find(p => p.ProdutoID == idProduto);
+            ProdutoModel produto = _produtos.FirstOrDefault(p => p.ProdutoID == produtoId);
 
             if (produto == null)
             {
@@ -131,34 +143,26 @@ public class VendaUI
             }
 
             VendaProdutoModel vendaProduto = new VendaProdutoModel(
-                _vendaProdutos.Max((v) => v.VendaProdutoID) + 1,
+                produtoId,
                 produto,
                 quantidade,
                 produto.Preco
             );
-            _vendaProdutos.Add(vendaProduto);
+            vendaProdutos.Add(vendaProduto);
             produto.Quantidade -= quantidade;
 
-            Console.WriteLine(" Deseja adicionar mais um produto? Digite 1 para Sair");
-            bool continuar = bool.Parse(Console.ReadLine() ?? "0");
-            if (continuar)
-            {
-                break;
-            }
-        }
+            Console.WriteLine(" Deseja adicionar mais um produto? Digite 0 para Sair");
+            continuar = Console.ReadLine() != "0";
+        } while (continuar);
 
-
-        DateTime currentDateTime = DateTime.Today;
-        DateOnly currentDate = DateOnly.FromDateTime(currentDateTime);
-
+        long vendaId = _vendas.Any() ? _vendas.Max(v => v.VendaID) + 1 : 1;
         VendaModel venda = new VendaModel(
-            _vendas.Max((v) => v.VendaID) + 1,
+            vendaId,
             cliente,
-            _vendaProdutos,
-            /*vendaProduto.PrecoUnitario,
-            vendaProduto.Quantidade,*/
-            currentDate
+            vendaProdutos,
+            data
         );
+        _vendas.Add(venda);
 
         Console.Clear();
         Console.WriteLine(" 💳 Venda realizada com sucesso! ✅ ");
@@ -187,18 +191,28 @@ public class VendaUI
 
         Console.WriteLine($" Valor Total: {venda.ValorTotal}");
     }
+
     private void BuscarVendasPorData()
     {
         Console.WriteLine(" 🕵️‍♀️ BUSCA DE VENDA POR DATA 📅 ");
         Console.Write(" -> Data (dd/mm/aaaa): ");
-        DateOnly data = DateOnly.Parse(Console.ReadLine() ?? "0");
 
-        List<VendaModel> vendasEncontradas = _vendas.FindAll(v => v.Data == data);
+        string dataStr = Console.ReadLine() ?? "0";
+        DateOnly data;
 
-        Console.WriteLine($" Foram Encontradas {vendasEncontradas.Count} Vendas nesta data:");
-        Console.WriteLine(" ");
+        if (DateOnly.TryParseExact(dataStr, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data))
+        {
+            List<VendaModel> vendasEncontradas = _vendas.FindAll(v => v.Data.Equals(data));
 
-        ListarVendas(_vendas);
+            Console.WriteLine($" Foram Encontradas {vendasEncontradas.Count} Vendas nesta data:");
+            Console.WriteLine(" ");
+
+            ListarVendas(_vendas);
+        }
+        else
+        {
+            Console.WriteLine(" Data inválida. Certifique-se de inserir uma data no formato dd/mm/aaaa.");
+        }
     }
 
     private void BuscarVendasPorCliente()
@@ -230,6 +244,7 @@ public class VendaUI
 
         ListarVendas(_vendas);
     }
+
     public void ListarVendaProdutos(List<VendaProdutoModel> vendaProdutos)
     {
         if (vendaProdutos.Count < 0)
@@ -246,12 +261,13 @@ public class VendaUI
         }
         Console.WriteLine(" ");
     }
+
     public void ListarVendas(List<VendaModel> vendas)
     {
         Console.Clear();
         Console.WriteLine(" 📜 TODAS AS VENDAS 📜 ");
 
-        if (vendas.Count < 0)
+        if (vendas.Count < 1)
         {
             Console.WriteLine(" ");
             Console.Write("\x1B[3m"); // Change font to italic
@@ -261,7 +277,7 @@ public class VendaUI
 
         foreach (VendaModel venda in vendas)
         {
-            Console.WriteLine($" {venda.VendaID} - Data: {venda.Data} | Cliente: {venda.Cliente.Nome}");
+            Console.WriteLine($" {venda.VendaID} - Data: {venda.Data.ToString("dd/MM/yyyy")} | Cliente: {venda.Cliente.Nome}");
         }
         Console.WriteLine(" ");
     }
