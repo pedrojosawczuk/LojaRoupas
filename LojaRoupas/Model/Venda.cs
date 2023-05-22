@@ -2,7 +2,7 @@ namespace LojaRoupas.Model;
 
 public class VendaModel
 {
-    public long VendaID;
+    public long VendaID { get; private set; }
     private ClienteModel _cliente;
     private List<VendaProdutoModel> _produtos;
     private DateOnly _data;

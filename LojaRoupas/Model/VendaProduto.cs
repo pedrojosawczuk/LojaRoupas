@@ -2,7 +2,7 @@ namespace LojaRoupas.Model;
 
 public class VendaProdutoModel
 {
-    public long VendaProdutoID;
+    public long VendaProdutoID { get; private set; }
     private ProdutoModel _produto;
     private double _quantidade { get; set; }
     private double _precoUniatario { get; set; }

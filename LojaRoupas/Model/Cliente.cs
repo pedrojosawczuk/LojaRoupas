@@ -2,7 +2,7 @@
 
 public class ClienteModel
 {
-    public long ClienteID;
+    public long ClienteID { get; private set; }
     private string _nome;
     private string _sobrenome;
     private string _endereco;

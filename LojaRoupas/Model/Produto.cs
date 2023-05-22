@@ -2,7 +2,7 @@
 
 public class ProdutoModel
 {
-    public long ProdutoID;
+    public long ProdutoID { get; private set; }
     private string _nome;
     private string _descricao;
     private double _preco;

@@ -2,7 +2,7 @@
 
 public class CategoriaModel
 {
-    public long CategoriaID;
+    public long CategoriaID { get; private set; }
     private string _nome;
     private string _descricao;
 
