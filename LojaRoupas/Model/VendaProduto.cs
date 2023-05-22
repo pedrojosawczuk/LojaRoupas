@@ -5,14 +5,14 @@ public class VendaProdutoModel
     public long VendaProdutoID { get; private set; }
     private ProdutoModel _produto;
     private double _quantidade { get; set; }
-    private double _precoUniatario { get; set; }
+    private double _precoUnitario { get; set; }
 
     public VendaProdutoModel(long vendaProdutoID, ProdutoModel produto, double quantidade, double precoUnitario)
     {
         VendaProdutoID = vendaProdutoID;
         _produto = produto;
         _quantidade = quantidade;
-        _precoUniatario = precoUnitario;
+        _precoUnitario = precoUnitario;
     }
 
     public ProdutoModel Produto
@@ -27,11 +27,11 @@ public class VendaProdutoModel
     }
     public double PrecoUnitario
     {
-        get { return _precoUniatario; }
-        set { _precoUniatario = value; }
+        get { return _precoUnitario; }
+        set { _precoUnitario = value; }
     }
     public double Subtotal
     {
-        get { return _quantidade * _precoUniatario; }
+        get { return _quantidade * _precoUnitario; }
     }
 }
